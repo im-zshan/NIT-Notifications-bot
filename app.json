@@ -1,0 +1,21 @@
+{
+   "name": "NIT-Notifications-bot",
+   "description": "NIT Notifications Bot",
+   "repository": "https://github.com/JameelKaisar/NIT-Notifications-bot",
+   "buildpacks": [
+      {
+         "url": "heroku/python"
+      }
+  ],
+   "env": {
+     "TOKEN": {
+      "description": "Telegram Bot Token"
+    },
+     "MONGO": {
+      "description": "MongoDB Driver Code"
+    },
+     "IDS": {
+      "description": "Comma-seperated IDs"
+    }
+  }
+}
