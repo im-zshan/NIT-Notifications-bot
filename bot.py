@@ -60,11 +60,14 @@ def send_notif(new_notif):
     caption = "<b>" + title + "</b>\nDate: " + date
     for id in IDS:
       url = f"https://api.telegram.org/bot{TOKEN}/sendDocument?chat_id={quote(id)}&document={quote(link)}&caption={quote(caption)}&parse_mode={quote('HTML')}"
-      print(url)
-#       try:
-      urlopen(Request(url))
-#       except:
-#         pass
+      try:
+        urlopen(Request(url))
+      except Exception as err:
+        try:
+          print(f"{type(e).__name__}: {err}\nURL: {url}")
+          urlopen(Request(f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={quote(ADMIN)}&text={quote(f"{type(e).__name__}: {err}\nURL: {url}")}"))
+        except:
+          pass
   print("Notification(s) Sent!")
 
 
@@ -73,7 +76,7 @@ url = "https://nitsri.ac.in/Pages/DisplayPages.aspx?page=cacgk"
 MONGO = environ["MONGO"]
 TOKEN = environ["TOKEN"]
 IDS = environ["IDS"].split(',')
-
+ADMIN = environ["ADMIN"]
 
 source = get_source(url)
 soup = BeautifulSoup(source, 'html.parser')
