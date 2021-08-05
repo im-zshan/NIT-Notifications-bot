@@ -64,7 +64,7 @@ def send_notif(new_notif):
         urlopen(Request(url))
       except Exception as err:
         try:
-          text = type(e).__name__ + ":" + err + "\nURL: " + url
+          text = type(err).__name__ + ":" + err + "\nURL: " + url
           print(text)
           urlopen(Request(f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={quote(ADMIN)}&text={quote(text)}"))
         except:
