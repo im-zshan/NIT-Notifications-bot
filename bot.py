@@ -62,7 +62,7 @@ def send_notif(new_notif):
       try:
         urlopen(Request(url))
       except:
-        
+        pass
   print("Notification(s) Sent!")
 
 
