@@ -65,7 +65,7 @@ def send_notif(new_notif):
       except Exception as err:
         try:
           print(f"{type(e).__name__}: {err}\nURL: {url}")
-          urlopen(Request(f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={quote(ADMIN)}&text={quote(f"{type(e).__name__}: {err}\nURL: {url}")}"))
+          urlopen(Request(f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={quote(ADMIN)}&text={quote(f'{type(e).__name__}: {err}\nURL: {url}')}"))
         except:
           pass
   print("Notification(s) Sent!")
