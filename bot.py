@@ -56,14 +56,13 @@ def check_db(col, notifications):
 
 def send_notif(new_notif):
   for title, date, link in new_notif:
-    caption = "*" + title + "*\nDate: " + date.replace('-', '/')
+    caption = "*" + title + "*\nDate: [haha] -/_~` " + date.replace('-', '\\-').replace("_", "\\_").replace("[", "\\[").replace("`", "\\`")
     for id in IDS:
       url = f"https://api.telegram.org/bot{TOKEN}/sendDocument?chat_id={quote(id)}&document={quote(link)}&caption={quote(caption)}&parse_mode={quote('MarkdownV2')}"
-      print(url)
-#       try:
-      urlopen(Request(url))
-#       except:
-#         pass
+      try:
+        urlopen(Request(url))
+      except:
+        
   print("Notification(s) Sent!")
 
 
