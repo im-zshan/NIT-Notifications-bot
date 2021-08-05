@@ -56,9 +56,10 @@ def check_db(col, notifications):
 
 def send_notif(new_notif):
   for title, date, link in new_notif:
-    caption = "*" + title + "*\nDate: [haha] -/_~` " + date.replace('-', '\\-').replace("_", "\\_").replace("[", "\\[").replace("`", "\\`")
+    title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+    caption = "<b>" + title + "</b>\nDate: " + date
     for id in IDS:
-      url = f"https://api.telegram.org/bot{TOKEN}/sendDocument?chat_id={quote(id)}&document={quote(link)}&caption={quote(caption)}&parse_mode={quote('MarkdownV2')}"
+      url = f"https://api.telegram.org/bot{TOKEN}/sendDocument?chat_id={quote(id)}&document={quote(link)}&caption={quote(caption)}&parse_mode={quote('HTML')}"
       print(url)
 #       try:
       urlopen(Request(url))
