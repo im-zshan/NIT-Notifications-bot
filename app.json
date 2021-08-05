@@ -16,6 +16,9 @@
     },
      "IDS": {
       "description": "Comma-seperated IDs"
+    },
+     "ADMIN": {
+      "description": "ID of Admin"
     }
   }
 }
