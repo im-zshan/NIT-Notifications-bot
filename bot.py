@@ -59,6 +59,7 @@ def send_notif(new_notif):
     caption = "*" + title + "*\nDate: " + date.replace('-', '/')
     for id in IDS:
       url = f"https://api.telegram.org/bot{TOKEN}/sendDocument?chat_id={quote(id)}&document={quote(link)}&caption={quote(caption)}&parse_mode={quote('MarkdownV2')}"
+      print(url)
 #       try:
       urlopen(Request(url))
 #       except:
